@@ -120,7 +120,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
-  scroll-margin-top: 5rem; /* adjusts based on navbar height */
+  scroll-margin-top: 5rem;
 }
 
 .section-header {
@@ -205,7 +205,6 @@ body {
   gap: 1.5rem;
 }
 
-
 /* ===== Internship Cards ===== */
 .internship-section {
   padding: 2rem;
@@ -213,10 +212,15 @@ body {
 
 .intern-card {
   background: cadetblue;
-  padding: 1rem;
+  padding: 1.25rem;
   margin-bottom: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.intern-card:hover {
+  transform: scale(1.02);
 }
 
 .intern-card h3 {
@@ -290,10 +294,12 @@ body {
   cursor: pointer;
   text-decoration: none;
   color: #333;
+  transition: all 0.3s ease;
 }
 
 .thumbnail-button:hover {
-  background-color: #e0e0e0;
+  background-color: #d1d5db;
+  transform: translateY(-2px);
 }
 
 /* ===== Cute Bubble ===== */
@@ -389,18 +395,9 @@ body {
 
 /* ===== Animations ===== */
 @keyframes pulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.7;
-  }
-  70% {
-    transform: scale(1.1);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
+  0% { transform: scale(0.9); opacity: 0.7; }
+  70% { transform: scale(1.1); opacity: 0; }
+  100% { transform: scale(0.9); opacity: 0; }
 }
 
 @keyframes twinkle {
@@ -480,6 +477,7 @@ body {
     margin-top: 1rem;
   }
 }
+
 .dashboard-container {
   overflow-y: auto;
   max-height: 100vh;

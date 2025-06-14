@@ -19,6 +19,7 @@ import others2 from '../assets/ec council.png';
 import others3 from '../assets/GuviCertification - 09w69CskLt885J1e56.png';
 import others4 from '../assets/scaler.png';
 import tam from '../assets/10thtamil.jpg';
+
 const certificateData = [
   {
     title: 'Introduction to Internet Of Things',
@@ -112,50 +113,46 @@ const certificateData = [
     category: 'OTHERS',
   },
   {
-  title: 'Parichaya to Praveen Exams (Hindi)',
-  issuer: 'Dakshina Bharat Hindi Prachar Sabha',
-  date: '2013 – 2024',
-  img: '/pdfs/Hindi_certificates .pdf', 
-  category: 'LANGUAGES',
-},
-{
-  title: 'English Proficiency & Essay Competition',
-  issuer: 'The Hindu Group & College Cultural Fest',
-  date: '2022, 2023',
-  img: '/pdfs/step.pdf',
-  category: 'LANGUAGES',
-},
-{
-  title: '1st Rank in Tamil (10th Board Exam)',
-  issuer: 'Social Welfare Development Organization',
-  date: '2018-2019',
-  img: tam, // optional
-  category: 'LANGUAGES',
-},
-
+    title: 'Parichaya to Praveen Exams (Hindi)',
+    issuer: 'Dakshina Bharat Hindi Prachar Sabha',
+    date: '2013 – 2024',
+    img: '/pdfs/Hindi_certificates .pdf',
+    category: 'LANGUAGES',
+  },
+  {
+    title: 'English Proficiency & Essay Competition',
+    issuer: 'The Hindu Group & College Cultural Fest',
+    date: '2022, 2023',
+    img: '/pdfs/step.pdf',
+    category: 'LANGUAGES',
+  },
+  {
+    title: '1st Rank in Tamil (10th Board Exam)',
+    issuer: 'Social Welfare Development Organization',
+    date: '2018-2019',
+    img: tam,
+    category: 'LANGUAGES',
+  },
 ];
 
-const categories = ['All', 'NPTEL', 'CISCO', 'LINKEDIN LEARNING', 'GREAT LEARNING', 'LANGUAGES','OTHERS'];
+const categories = ['All', 'NPTEL', 'CISCO', 'LINKEDIN LEARNING', 'GREAT LEARNING', 'LANGUAGES', 'OTHERS'];
 
 export default function Certificates() {
   const [filter, setFilter] = useState('All');
   const [selectedImg, setSelectedImg] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
-  const filteredData =
-    filter === 'All' ? certificateData : certificateData.filter(c => c.category === filter);
-
+  const filteredData = filter === 'All' ? certificateData : certificateData.filter(c => c.category === filter);
   const visibleCertificates = showAll ? filteredData : filteredData.slice(0, 3);
 
   return (
     <div className="certificates-page container">
-
       <h2 className="section-header">Internships</h2>
       <p className="section-subtext">Check out the hands-on learning experiences I gained during internships.</p>
       <Internships />
       <hr className="section-divider" />
 
-      <h2 className="certificates-title">My Certifications </h2>
+      <h2 id="certificates" className="certificates-title section">My Certifications</h2>
       <p className="cert-intro">I like to learn and explore new things. Here are some courses and certifications I completed.</p>
 
       <div className="filter-buttons">
@@ -165,7 +162,7 @@ export default function Certificates() {
             className={filter === cat ? 'active' : ''}
             onClick={() => {
               setFilter(cat);
-              setShowAll(false); // Reset on filter change
+              setShowAll(false);
             }}
           >
             {cat}
@@ -173,42 +170,44 @@ export default function Certificates() {
         ))}
       </div>
 
-      <div className="certificate-grid">
-        {visibleCertificates.map((cert, index) => (
-          <div key={index} className="certificate-card">
-            {cert.img.endsWith('.pdf') ? (
-  <a
-    href={cert.img}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="thumbnail-button"
-  >
-    📄 View {cert.title}
-  </a>
-) : (
-  <button className="thumbnail-button" onClick={() => setSelectedImg(cert.img)}>
-    📄 View {cert.title}
-  </button>
-)}
-
-            <div className="cert-info">
-              <h4>{cert.title}</h4>
-              <p>{cert.issuer}</p>
-              <p className="date">📅 {cert.date}</p>
+      {visibleCertificates.length > 0 ? (
+        <div className="certificate-grid">
+          {visibleCertificates.map((cert, index) => (
+            <div key={index} className="certificate-card">
+              {cert.img.endsWith('.pdf') ? (
+                <a
+                  href={cert.img}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="thumbnail-button"
+                >
+                  📄 View {cert.title}
+                </a>
+              ) : (
+                <button
+                  className="thumbnail-button"
+                  onClick={() => setSelectedImg(cert.img)}
+                >
+                  📄 View {cert.title}
+                </button>
+              )}
+              <div className="cert-info">
+                <h4>{cert.title}</h4>
+                <p>{cert.issuer}</p>
+                <p className="date">📅 {cert.date}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <p className="no-cert-msg">No certificates found in this category.</p>
+      )}
 
-     {filteredData.length > 3 && (
-  <p
-    className="see-more-link"
-    onClick={() => setShowAll(prev => !prev)}
-  >
-    {showAll ? 'See Less ▲' : 'See More ▼'}
-  </p>
-)}
-
+      {filteredData.length > 3 && (
+        <p className="see-more-link" onClick={() => setShowAll(prev => !prev)}>
+          {showAll ? 'See Less ▲' : 'See More ▼'}
+        </p>
+      )}
 
       {selectedImg && (
         <Lightbox
