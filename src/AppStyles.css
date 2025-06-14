@@ -1,21 +1,15 @@
-/* ===== Reset & Base Styles ===== */
+/* Reset default browser styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html, body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
   font-family: sans-serif;
 }
-
-body {
-  overflow-x: hidden;
-}
-
 #root {
   min-height: 100vh;
   width: 100%;
@@ -28,8 +22,12 @@ body {
   scroll-behavior: smooth;
   background-color: white;
   color: #111;
-  width: 100%;
-  min-height: 100vh;
+  font-family: sans-serif;
+  width: 100%;       /* Take full screen width */
+  min-height: 100vh;  /* Take at least full screen height */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .dark .app-wrapper {
@@ -37,7 +35,6 @@ body {
   color: white;
 }
 
-/* ===== Navbar ===== */
 .navbar {
   position: fixed;
   top: 0;
@@ -64,11 +61,9 @@ body {
 
 .nav-links {
   display: flex;
+  padding-top: 0.5rem;
   gap: 1.5rem;
   width: 100%;
-  padding-top: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .link-item {
@@ -80,13 +75,6 @@ body {
 .active-link {
   color: #2563eb;
   font-weight: 600;
-}
-
-.navbar-right {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-left: auto;
 }
 
 .dark-toggle {
@@ -103,7 +91,6 @@ body {
   background-color: #374151;
 }
 
-/* ===== Sections & Layout ===== */
 .content {
   padding-top: 0;
   position: relative;
@@ -120,20 +107,13 @@ body {
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
-  scroll-margin-top: 5rem; /* adjusts based on navbar height */
 }
 
-.section-header {
-  font-size: clamp(3rem, 10vw, 8rem);
-  font-weight: 800;
-  margin: 1rem;
-  padding-bottom: 0;
-}
-
-.section-left,
-.section-right {
-  width: 100%;
-  text-align: center;
+@media (min-width: 768px) {
+  .section {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .home-section,
@@ -142,15 +122,15 @@ body {
   background-color: tan;
 }
 
-.about-section,
-.certifications-section {
-  background-color: teal;
-}
-
 .dark .home-section,
 .dark .projects-section,
 .dark .contact-section {
   background-color: #111827;
+}
+
+.about-section,
+.certifications-section {
+  background-color: teal;
 }
 
 .dark .about-section,
@@ -158,13 +138,26 @@ body {
   background-color: #1f2937;
 }
 
-/* ===== Home Section ===== */
+.navbar-right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-left: auto; /* pushes it to the right */
+}
+
+.section-left,
+.section-right {
+  width: 100%;
+  text-align: center;
+}
+
 .home-section {
+  min-height: 100vh;
+  padding: clamp(2rem, 5vw, 4rem);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: clamp(2rem, 5vw, 4rem);
 }
 
 .home-content {
@@ -189,26 +182,20 @@ body {
   color: #1d4ed8;
 }
 
-/* ===== About Section ===== */
+.section-header {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 800;
+  margin: 1rem;
+  padding-bottom: 0rem;
+}
 .about-section .section-left {
-  margin-top: -8rem;
+  margin-top: -8rem; /* Adjust as needed */
 }
 
-/* ===== Certifications Section ===== */
-.certifications-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1rem;
-  min-height: 100vh;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-
-/* ===== Internship Cards ===== */
+/* AppStyles.css or your main stylesheet */
 .internship-section {
   padding: 2rem;
+
 }
 
 .intern-card {
@@ -229,94 +216,7 @@ body {
   margin-top: 0.5rem;
 }
 
-/* ===== Contact Section ===== */
-.contact-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
-  padding: 2rem;
-}
-
-.contact-heading {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #4f46e5;
-}
-
-.contact-sub {
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-  color: #666;
-}
-
-.contact-email {
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  font-style: italic;
-}
-
-.section-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-/* ===== Buttons ===== */
-.resume-download-btn {
-  background-color: grey;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 14px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.resume-download-btn:hover {
-  background-color: #1d4ed8;
-}
-
-.thumbnail-button {
-  display: inline-block;
-  padding: 8px 12px;
-  background-color: #f0f0f0;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  color: #333;
-}
-
-.thumbnail-button:hover {
-  background-color: #e0e0e0;
-}
-
-/* ===== Cute Bubble ===== */
-.cute-bubble {
-  background: var(--bubble-bg, #fef3c7);
-  color: #92400e;
-  padding: 1rem 1.5rem;
-  border-radius: 0.5rem;
-  margin: 1rem auto;
-  font-weight: 500;
-  max-width: 500px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-
-.dark .cute-bubble {
-  background: #1f2937;
-  color: #fbbf24;
-}
-
-/* ===== Icons & Effects ===== */
-.social-icons,
-.creative-icons {
+.social-icons {
   margin-top: 1.5rem;
   display: flex;
   gap: 1.5rem;
@@ -337,11 +237,36 @@ body {
   color: #2563eb;
 }
 
+.contact-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4f46e5;
+}
+
+.contact-sub {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+.contact-email {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.creative-icons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
 .icon-wrapper {
   position: relative;
   font-size: 2rem;
-  background: #f0f0f0;
   color: #111;
+  background: #f0f0f0;
   border-radius: 50%;
   padding: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -370,48 +295,12 @@ body {
 .icon-wrapper:hover::after {
   opacity: 1;
 }
-
-/* ===== Image & Scroll Hints ===== */
-.profile-img {
-  width: 20rem;
-  height: 20rem;
-  object-fit: cover;
-  border-radius: 999px;
-  border: 1px solid;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
-}
-
-.scroll-hint {
-  margin-top: 2.5rem;
-  color: #6b7280;
-  user-select: none;
-}
-
-/* ===== Animations ===== */
-@keyframes pulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.7;
+@media (max-width: 767px) {
+  .navbar-right {
+    margin-left: 0;
+    justify-content: center;
+    margin-top: 1rem;
   }
-  70% {
-    transform: scale(1.1);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-
-@keyframes float {
-  0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-  50% { transform: translateY(-10px) rotate(3deg); opacity: 1; }
-  100% { transform: translateY(0) rotate(-3deg); opacity: 0.8; }
 }
 
 .pulse-ring {
@@ -431,25 +320,22 @@ body {
   animation: pulse 1.5s infinite;
 }
 
-.animate-twinkle {
-  animation: twinkle infinite ease-in-out;
-}
-
-.animate-float {
-  animation-name: float;
-  animation-duration: 6s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-/* ===== Responsive ===== */
-@media (min-width: 768px) {
-  .section {
-    flex-direction: row;
-    align-items: center;
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
   }
+  70% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
 
+@media (min-width: 768px) {
   .section-left {
     text-align: left;
     width: 50%;
@@ -474,20 +360,138 @@ body {
     gap: 1rem;
   }
 
-  .navbar-right {
-    margin-left: 0;
+  .nav-links {
+    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 1rem;
+    gap: 1rem;
   }
-}
-.dashboard-container {
-  overflow-y: auto;
-  max-height: 100vh;
-  padding: 1rem;
 }
 
-@media (max-width: 767px) {
-  .dashboard-container {
-    padding-bottom: 5rem;
+.profile-img {
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 999px;
+  border: 1px solid;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-hint {
+  margin-top: 2.5rem;
+  color: #6b7280;
+  user-select: none;
+}
+
+/* Keyframes */
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
   }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(-3deg);
+    opacity: 0.8;
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle infinite ease-in-out;
+}
+
+.animate-float {
+  animation-name: float;
+  animation-duration: 6s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.certifications-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+@media (max-width: 767px) {
+  .certifications-section {
+    padding: 2rem 1rem;
+  }
+}
+
+.thumbnail-button {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+}
+
+.thumbnail-button:hover {
+  background-color: #e0e0e0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+* {
+  max-width: 100vw;
+}
+.resume-download-btn {
+  background-color: grey;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.resume-download-btn:hover {
+  background-color: #1d4ed8;
+}
+.cute-bubble {
+  background: var(--bubble-bg, #fef3c7);
+  color: #92400e;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  margin: 1rem auto;
+  font-weight: 500;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.dark .cute-bubble {
+  background: #1f2937;
+  color: #fbbf24;
+}
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical center */
+  align-items: center;     /* Horizontal center */
+  text-align: center;
+  min-height: 100vh;       /* Full height of the viewport */
+  padding: 2rem;
+}
+.section-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
