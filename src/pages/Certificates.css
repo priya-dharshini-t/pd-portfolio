@@ -1,0 +1,149 @@
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 20px;
+  padding: 0 10px;
+  justify-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+@media (max-width: 767px) {
+  .certificate-grid {
+    gap: 1.5rem;
+  }
+}
+
+.certificate-card {
+  background: cadetblue;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.certificate-card:hover {
+  transform: translateY(-5px);
+}
+
+.cert-info {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.cert-info h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.cert-info p.date {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.thumbnail-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.thumbnail-button:hover {
+  background-color: #666;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 50px auto;
+  text-align: center;
+}
+
+
+.filter-buttons button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.filter-buttons button:hover {
+  background-color: #666;
+}
+
+.filter-buttons button.active {
+  background-color: #007bff; /* Highlight active filter */
+  color: #fff;
+}
+
+.certificates-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 60px;
+  color: black;
+}
+
+.dark .certificates-title { color: white;}
+
+.cert-intro {
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 10px auto 30px;
+  max-width: 900px;
+  color: white;
+}
+
+.section-header {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 90px;
+  color: #fff;
+}
+
+.section-subtext {
+  text-align: center;
+  font-size: 1rem;
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+.section-divider {
+  border: none;
+  height: 2px;
+  background-color: #444;
+  margin: 30px 0;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto; /* Center horizontally */
+  padding: 0 20px;
+}
+
+.see-more-link {
+  color: snow;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 30px;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.see-more-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}

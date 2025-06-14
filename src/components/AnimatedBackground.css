@@ -1,0 +1,63 @@
+.background-animated {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  filter: blur(2px);
+}
+
+.shape1 {
+  width: 100px;
+  height: 100px;
+  background: #ff6b6b;
+  top: 20%;
+  left: 10%;
+}
+
+.shape2 {
+  width: 80px;
+  height: 80px;
+  background: #ffd93d;
+  top: 40%;
+  left: 60%;
+}
+
+.shape3 {
+  width: 70px;
+  height: 70px;
+  background: #6bcBef;
+  top: 70%;
+  left: 30%;
+}
+
+.shape4 {
+  width: 60px;
+  height: 60px;
+  background: #a3e635;
+  top: 85%;
+  left: 80%;
+}
+
+.dark .shape1 { background: #7dd3fc; }
+.dark .shape2 { background: #facc15; }
+.dark .shape3 { background: #f472b6; }
+.dark .shape4 { background: #34d399; }
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.5;
+  z-index: 0;
+}
+
