@@ -169,29 +169,30 @@ export default function Certificates() {
         <div className="certificate-grid">
           {visibleCertificates.map((cert, index) => (
             <div key={index} className="certificate-card">
-              {cert.img.endsWith('.pdf') ? (
-                <a
-                  href={cert.img}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="thumbnail-button"
-                >
-                  📄 View {cert.title}
-                </a>
-              ) : (
-                <button
-                  className="thumbnail-button"
-                  onClick={() => setSelectedImg(cert.img)}
-                >
-                  📄 View {cert.title}
-                </button>
-              )}
-              <div className="cert-info">
-                <h4>{cert.title}</h4>
-                <p>{cert.issuer}</p>
-                <p className="date">📅 {cert.date}</p>
-              </div>
-            </div>
+  <div className="cert-info">
+    <h4>{cert.title}</h4>
+    <p>{cert.issuer}</p>
+    <p className="date">📅 {cert.date}</p>
+  </div>
+  {cert.img.endsWith('.pdf') ? (
+    <a
+      href={cert.img}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="thumbnail-button"
+    >
+      📄 View Certificate (PDF)
+    </a>
+  ) : (
+    <button
+      className="thumbnail-button"
+      onClick={() => setSelectedImg(cert.img)}
+    >
+      📄 View Certificate
+    </button>
+  )}
+</div>
+
           ))}
         </div>
       ) : (
