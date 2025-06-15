@@ -147,7 +147,7 @@ export default function Certificates() {
 
   return (
     <div className="certificates-page container">
-      <h2 id="certificates" className="certificates-title">My Certifications</h2>
+      <h2 id="certificates" className="certificates-title"> Certifications</h2>
       <p className="cert-intro">I like to learn and explore new things. Here are some courses and certifications I completed.</p>
 
       <div className="filter-buttons">

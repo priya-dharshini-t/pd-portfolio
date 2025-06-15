@@ -5,7 +5,6 @@ import { projects } from '../data/projects';
 function ProjectsList() {
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>My Projects</h1>
       <div style={styles.grid}>
         {projects.map(project => (
           <div key={project.id} style={styles.card}>

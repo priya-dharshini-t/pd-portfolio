@@ -23,10 +23,9 @@ const internships = [
 const Internships = () => {
   return (
     <div className="internship-section">
-      <h2> Internships</h2>
       {internships.map((intern, index) => (
         <div className="intern-card" key={index}>
-          <h3>{intern.company}</h3>
+          <h3><b>{intern.company}</b></h3>
           <p><strong>Role:</strong> {intern.role}</p>
           <p><strong>Duration:</strong> {intern.duration}</p>
           <p>{intern.description}</p>

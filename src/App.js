@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Element } from 'react-scroll';
+import { Link, Element, scrollSpy } from 'react-scroll';
 import { motion } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 import StarryBackground from './components/StarryBackground';
@@ -34,6 +34,10 @@ export default function App() {
     }
   }, [darkMode]);
 
+  useEffect(() => {
+    scrollSpy.update(); // ✅ moved inside App component
+  }, []);
+
   return (
     <div className="app-wrapper">
       <StarryBackground />
@@ -43,26 +47,25 @@ export default function App() {
       {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-content">
-          {/* LEFT: Navigation Links */}
+          {/* Navigation Links */}
           <div className="nav-links">
             {['home', 'about', 'projects', 'certifications', 'contact'].map((section) => (
-<Link
-  key={section}
-  to={section}
-  smooth={true}
-  duration={500}
-  offset={-100} // Matches scroll-margin-top
-  spy={true}
-  activeClass="active-link"
-  className="link-item"
->
-  {section.charAt(0).toUpperCase() + section.slice(1)}
-</Link>
-
+              <Link
+                key={section}
+                to={section}
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-80}
+                activeClass="active-link"
+                className="link-item"
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </Link>
             ))}
           </div>
 
-          {/* RIGHT: Resume + Dark Mode */}
+          {/* Resume + Dark Mode */}
           <div className="navbar-right">
             <a
               href="/resume.pdf"
@@ -83,7 +86,7 @@ export default function App() {
       </nav>
 
       <div className="content">
-        {/* Home Section */}
+        {/* Home */}
         <Element name="home" className="section home-section">
           <motion.div
             initial="hidden"
@@ -96,9 +99,7 @@ export default function App() {
             <p>
               This portfolio is a window into my evolving tech journey — where every
               certification earned, every internship tackled, and every project built tells
-              a story of innovation, learning, and passion.
-              <br />
-              Let’s explore the future — one click at a time. 💻🚀
+              a story of innovation, learning, and passion. Let’s explore and get to know more about me. 💻🚀
             </p>
             <motion.div
               animate={{ y: [0, 10, 0] }}
@@ -119,7 +120,7 @@ export default function App() {
           </motion.div>
         </Element>
 
-        {/* About Section */}
+        {/* About */}
         <Element name="about" className="section about-section">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -146,17 +147,20 @@ export default function App() {
               driven by a desire to learn and innovate.
               <br />
               Beyond code, I believe in clarity, collaboration, and creating software that matters.
-              I’m excited to bring fresh energy, strong fundamentals, and a builder’s mindset into every opportunity I take on.
+              I’m excited to bring fresh energy, strong fundamentals, and a builder’s mindset into
+              every opportunity I take on.
             </p>
           </motion.div>
         </Element>
 
-        {/* Projects Section */}
+        {/* Projects */}
         <Element name="projects" className="section projects-section">
+          <h2 className="section-header">Projects</h2>
+
           <ProjectsList />
         </Element>
 
-        {/* Certifications Section */}
+        {/* Certifications & Internships */}
         <Element name="certifications" className="section certifications-section">
           <motion.div
             initial="hidden"
@@ -165,12 +169,18 @@ export default function App() {
             variants={fadeInUp}
             className="section-center"
           >
-            <Internships />
-            <Certificates />
-          </motion.div>
-        </Element>
+            <h2 className="section-header">Internships</h2>
+    <p className="section-subtext">
+      Here’s a glimpse into the professional experiences where I applied my learning and gained hands-on skills.
+    </p>
+    <Internships />
 
-        {/* Contact Section */}
+    <hr className="divider-line" />
+    <Certificates />
+  </motion.div>
+</Element>
+
+        {/* Contact */}
         <Element name="contact" className="section contact-section">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -179,41 +189,21 @@ export default function App() {
             className="section-center"
           >
             <h2 className="contact-heading">Let’s Connect ✨</h2>
-            <p className="contact-sub">
-              Drop a little “Hi 👋” — I’d love to hear from you!
-            </p>
+            <p className="contact-sub">Drop a little “Hi 👋” — I’d love to hear from you!</p>
 
             <div className="cute-bubble">
               💌 Thank you for visiting my portfolio! You can reach me through these platforms:
             </div>
 
             <div className="creative-icons">
-              <a
-                href="https://www.linkedin.com/in/priya-dharshini-t-20pd"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div className="icon-wrapper" data-tooltip="LinkedIn">
-                  <FaLinkedin />
-                </div>
+              <a href="https://www.linkedin.com/in/priya-dharshini-t-20pd" target="_blank" rel="noreferrer">
+                <div className="icon-wrapper" data-tooltip="LinkedIn"><FaLinkedin /></div>
               </a>
-              <a
-                href="https://github.com/priya-dharshini-t"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div className="icon-wrapper" data-tooltip="GitHub">
-                  <FaGithub />
-                </div>
+              <a href="https://github.com/priya-dharshini-t" target="_blank" rel="noreferrer">
+                <div className="icon-wrapper" data-tooltip="GitHub"><FaGithub /></div>
               </a>
-              <a
-                href="https://twitter.com/priyad_code"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div className="icon-wrapper" data-tooltip="Twitter">
-                  <FaTwitter />
-                </div>
+              <a href="https://twitter.com/priyad_code" target="_blank" rel="noreferrer">
+                <div className="icon-wrapper" data-tooltip="Twitter"><FaTwitter /></div>
               </a>
             </div>
 
