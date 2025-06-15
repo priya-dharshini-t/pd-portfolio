@@ -107,6 +107,7 @@ html, body {
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
+  scroll-margin-top: 100px;
 }
 
 @media (min-width: 768px) {

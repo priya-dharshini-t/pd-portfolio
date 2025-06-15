@@ -41,47 +41,48 @@ export default function App() {
       <ScrollToTop smooth />
 
       {/* Navbar */}
-<nav className="navbar">
-  <div className="navbar-content">
-    {/* LEFT: Navigation Links */}
-    <div className="nav-links">
-      {['home', 'about', 'projects', 'certifications', 'contact'].map((section) => (
-        <Link
-          key={section}
-          to={section}
-          smooth
-          duration={500}
-          spy
-          activeClass="active-link"
-          className="link-item"
-        >
-          {section.charAt(0).toUpperCase() + section.slice(1)}
-        </Link>
-      ))}
-    </div>
+      <nav className="navbar">
+        <div className="navbar-content">
+          {/* LEFT: Navigation Links */}
+          <div className="nav-links">
+            {['home', 'about', 'projects', 'certifications', 'contact'].map((section) => (
+<Link
+  key={section}
+  to={section}
+  smooth={true}
+  duration={500}
+  offset={-100} // Matches scroll-margin-top
+  spy={true}
+  activeClass="active-link"
+  className="link-item"
+>
+  {section.charAt(0).toUpperCase() + section.slice(1)}
+</Link>
 
-    {/* RIGHT: Resume + Dark Mode */}
-    <div className="navbar-right">
-      <a
-        href="/resume.pdf"
-        download="Priya_Dharshini_Resume.pdf"
-        className="resume-download-btn"
-      >
-        📄 Resume
-      </a>
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="dark-toggle"
-        aria-label="Toggle Dark Mode"
-      >
-         {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-      </button>
-    </div>
-  </div>
-</nav>
+            ))}
+          </div>
+
+          {/* RIGHT: Resume + Dark Mode */}
+          <div className="navbar-right">
+            <a
+              href="/resume.pdf"
+              download="Priya_Dharshini_Resume.pdf"
+              className="resume-download-btn"
+            >
+              📄 Resume
+            </a>
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="dark-toggle"
+              aria-label="Toggle Dark Mode"
+            >
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          </div>
+        </div>
+      </nav>
 
       <div className="content">
-
         {/* Home Section */}
         <Element name="home" className="section home-section">
           <motion.div
@@ -157,18 +158,17 @@ export default function App() {
 
         {/* Certifications Section */}
         <Element name="certifications" className="section certifications-section">
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.3 }}
-    variants={fadeInUp}
-    className="section-center"
-  >
-    <Internships />
-    <Certificates />
-  </motion.div>
-</Element>
-
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeInUp}
+            className="section-center"
+          >
+            <Internships />
+            <Certificates />
+          </motion.div>
+        </Element>
 
         {/* Contact Section */}
         <Element name="contact" className="section contact-section">
