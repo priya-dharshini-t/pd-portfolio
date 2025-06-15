@@ -147,12 +147,7 @@ export default function Certificates() {
 
   return (
     <div className="certificates-page container">
-      <h2 className="section-header">Internships</h2>
-      <p className="section-subtext">Check out the hands-on learning experiences I gained during internships.</p>
-      <Internships />
-      <hr className="section-divider" />
-
-      <h2 id="certificates" className="certificates-title section">My Certifications</h2>
+      <h2 id="certificates" className="certificates-title">My Certifications</h2>
       <p className="cert-intro">I like to learn and explore new things. Here are some courses and certifications I completed.</p>
 
       <div className="filter-buttons">

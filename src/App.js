@@ -157,16 +157,18 @@ export default function App() {
 
         {/* Certifications Section */}
         <Element name="certifications" className="section certifications-section">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-            className="section-center"
-          > <Internships />
-            <Certificates />
-          </motion.div>
-        </Element>
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.3 }}
+    variants={fadeInUp}
+    className="section-center"
+  >
+    <Internships />
+    <Certificates />
+  </motion.div>
+</Element>
+
 
         {/* Contact Section */}
         <Element name="contact" className="section contact-section">

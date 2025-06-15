@@ -23,6 +23,7 @@ const internships = [
 const Internships = () => {
   return (
     <div className="internship-section">
+      <h2> Internships</h2>
       {internships.map((intern, index) => (
         <div className="intern-card" key={index}>
           <h3>{intern.company}</h3>
