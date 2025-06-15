@@ -163,7 +163,7 @@ export default function App() {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeInUp}
             className="section-center"
-          >
+          > <Internships />
             <Certificates />
           </motion.div>
         </Element>
