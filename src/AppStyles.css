@@ -466,3 +466,34 @@ html, body {
   color: #6b7280;
   user-select: none;
 }
+/* Make Projects & Internships headings big and bold */
+.projects-section .section-header,
+.internship-section .section-header {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Subtext for Internships */
+.internship-section .section-subtext {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #666;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Divider line between internships & certificates */
+.internship-certificates-divider {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 3rem auto;
+  width: 80%;
+}
+
+/* Fix PDF overlay issue on mobile */
+.certificate-image {
+  pointer-events: auto !important;
+}
