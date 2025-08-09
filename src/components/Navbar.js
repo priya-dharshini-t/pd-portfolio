@@ -1,40 +1,14 @@
-import React from "react";
-import { Link } from "react-scroll";
+import React from 'react';
 
-function Navbar() {
+const Navbar = ({ onNavigate }) => {
   return (
-    <nav className="navbar">
-      <Link
-        to="about"
-        smooth={true}
-        duration={500}
-        offset={-80} // adjust for navbar height
-        className="nav-item"
-      >
-        About
-      </Link>
-
-      <Link
-        to="projects"
-        smooth={true}
-        duration={500}
-        offset={-80}
-        className="nav-item"
-      >
-        Projects
-      </Link>
-
-      <Link
-        to="certificates"
-        smooth={true}
-        duration={500}
-        offset={-80}
-        className="nav-item"
-      >
-        Certificates
-      </Link>
+    <nav className="bg-purple-600 text-white p-4 flex justify-center gap-6">
+      <button onClick={() => onNavigate('home')} className="hover:underline">Home</button>
+      <button onClick={() => onNavigate('about')} className="hover:underline">About</button>
+      <button onClick={() => onNavigate('contact')} className="hover:underline">Contact</button>
     </nav>
   );
-}
+};
+
 
 export default Navbar;

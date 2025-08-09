@@ -35,7 +35,7 @@ export default function App() {
   }, [darkMode]);
 
   useEffect(() => {
-    scrollSpy.update();
+    scrollSpy.update(); // ✅ moved inside App component
   }, []);
 
   return (
@@ -47,8 +47,9 @@ export default function App() {
       {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-content">
+          {/* Navigation Links */}
           <div className="nav-links">
-            {['home', 'about', 'projects', 'internships', 'certifications', 'contact'].map((section) => (
+            {['home', 'about', 'projects', 'certifications', 'contact'].map((section) => (
               <Link
                 key={section}
                 to={section}
@@ -64,6 +65,7 @@ export default function App() {
             ))}
           </div>
 
+          {/* Resume + Dark Mode */}
           <div className="navbar-right">
             <a
               href="/resume.pdf"
@@ -154,29 +156,11 @@ export default function App() {
         {/* Projects */}
         <Element name="projects" className="section projects-section">
           <h2 className="section-header">Projects</h2>
+
           <ProjectsList />
         </Element>
 
-        {/* Internships */}
-        <Element name="internships" className="section internships-section">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-            className="section-center"
-          >
-            <h2 className="section-header">Internships</h2>
-            <p className="section-subtext">
-              Here’s a glimpse into the professional experiences where I applied my learning and gained hands-on skills.
-            </p>
-            <Internships textColor="black" />
-          </motion.div>
-        </Element>
-
-        <hr className="divider-line" />
-
-        {/* Certifications */}
+        {/* Certifications & Internships */}
         <Element name="certifications" className="section certifications-section">
           <motion.div
             initial="hidden"
@@ -185,10 +169,16 @@ export default function App() {
             variants={fadeInUp}
             className="section-center"
           >
-            <h2 className="section-header">Certifications</h2>
-            <Certificates />
-          </motion.div>
-        </Element>
+            <h2 className="section-header">Internships</h2>
+    <p className="section-subtext">
+      Here’s a glimpse into the professional experiences where I applied my learning and gained hands-on skills.
+    </p>
+    <Internships />
+
+    <hr className="divider-line" />
+    <Certificates />
+  </motion.div>
+</Element>
 
         {/* Contact */}
         <Element name="contact" className="section contact-section">
