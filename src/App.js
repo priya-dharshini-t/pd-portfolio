@@ -1,218 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Element, scrollSpy } from 'react-scroll';
-import { motion } from 'framer-motion';
-import { Sun, Moon } from 'lucide-react';
-import StarryBackground from './components/StarryBackground';
-import AnimatedBackground from './components/AnimatedBackground';
-import './AppStyles.css';
-import ScrollToTop from 'react-scroll-to-top';
-import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
-import ProjectsList from './components/ProjectsList';
-import Internships from './components/Internship';
-import Certificates from './pages/Certifications';
-import meeImage from './assets/mee.jpg';
-import avatarImage from './assets/avatar2.png';
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
-};
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Certifications from './pages/Certifications';
+import Contact from './pages/Contact';
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(() =>
-    localStorage.getItem('theme') === 'dark'
-  );
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (darkMode) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [darkMode]);
-
-  useEffect(() => {
-    scrollSpy.update(); // ✅ moved inside App component
-  }, []);
-
+  const [darkMode, setDarkMode] = useState(true);
+  
   return (
-    <div className="app-wrapper">
-      <StarryBackground />
-      <AnimatedBackground />
-      <ScrollToTop smooth />
+    <div className={darkMode ? 'app-wrapper dark' : 'app-wrapper'}>
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
-      {/* Navbar */}
-      <nav className="navbar">
-        <div className="navbar-content">
-          {/* Navigation Links */}
-          <div className="nav-links">
-            {['home', 'about', 'projects', 'certifications', 'contact'].map((section) => (
-              <Link
-                key={section}
-                to={section}
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-80}
-                activeClass="active-link"
-                className="link-item"
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </Link>
-            ))}
-          </div>
+      <main>
+  <section id="home" className={`home-section ${darkMode ? 'dark' : 'light'}`}>
+    <Home />
+  </section>
 
-          {/* Resume + Dark Mode */}
-          <div className="navbar-right">
-            <a
-              href="/resume.pdf"
-              download="Priya_Dharshini_Resume.pdf"
-              className="resume-download-btn"
-            >
-              📄 Resume
-            </a>
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="dark-toggle"
-              aria-label="Toggle Dark Mode"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-          </div>
-        </div>
-      </nav>
+  <section id="about" className={`about-section ${darkMode ? 'dark' : 'light'}`}>
+    <About />
+  </section>
 
-      <div className="content">
-        {/* Home */}
-        <Element name="home" className="section home-section">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-            className="section-left"
-          >
-            <h1 className="home-header">Hello and Welcome to My Digital Space! 👋</h1>
-            <p>
-              This portfolio is a window into my evolving tech journey — where every
-              certification earned, every internship tackled, and every project built tells
-              a story of innovation, learning, and passion. Let’s explore and get to know more about me. 💻🚀
-            </p>
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-              className="scroll-hint"
-            >
-              ⬇ Scroll down
-            </motion.div>
-          </motion.div>
+  <section id="projects" className={`projects-section ${darkMode ? 'dark' : 'light'}`}>
+    <Projects darkMode={darkMode}/>
+  </section>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-            className="section-right"
-          >
-            <img src={avatarImage} alt="Cartoon avatar of Priya" className="profile-img" />
-          </motion.div>
-        </Element>
+  <section id="certifications" className={`certificates-section ${darkMode ? 'dark' : 'light'}`}>
+    <Certifications darkMode={darkMode} />
+  </section>
 
-        {/* About */}
-        <Element name="about" className="section about-section">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7 }}
-            className="section-right"
-          >
-            <img src={meeImage} alt="Real photo of Priya" className="profile-img" />
-          </motion.div>
+  <section id="contact" className={`contact-section ${darkMode ? 'dark' : 'light'}`}>
+    <Contact darkMode={darkMode}/>
+  </section>
+</main>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-            className="section-left"
-          >
-            <h2 className="section-header">About Me</h2>
-            <p>
-              Hi, I’m Priya Dharshini .T — a passionate and curious software engineer with a love for
-              technology that solves real-world problems. I recently completed my Bachelor’s in
-              Engineering and have since been on a journey through full-stack development and Python.
-              Whether I’m debugging code, designing interfaces, or exploring frameworks, I’m always
-              driven by a desire to learn and innovate.
-              <br />
-              Beyond code, I believe in clarity, collaboration, and creating software that matters.
-              I’m excited to bring fresh energy, strong fundamentals, and a builder’s mindset into
-              every opportunity I take on.
-            </p>
-          </motion.div>
-        </Element>
-
-        {/* Projects */}
-        <Element name="projects" className="section projects-section">
-          <h2 className="section-header">Projects</h2>
-
-          <ProjectsList />
-        </Element>
-
-        {/* Certifications & Internships */}
-        <Element name="certifications" className="section certifications-section">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={fadeInUp}
-            className="section-center"
-          >
-            <h2 className="section-header">Internships</h2>
-    <p className="section-subtext">
-      Here’s a glimpse into the professional experiences where I applied my learning and gained hands-on skills.
-    </p>
-    <Internships />
-
-    <hr className="divider-line" />
-    <Certificates />
-  </motion.div>
-</Element>
-
-        {/* Contact */}
-        <Element name="contact" className="section contact-section">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="section-center"
-          >
-            <h2 className="contact-heading">Let’s Connect ✨</h2>
-            <p className="contact-sub">Drop a little “Hi 👋” — I’d love to hear from you!</p>
-
-            <div className="cute-bubble">
-              💌 Thank you for visiting my portfolio! You can reach me through these platforms:
-            </div>
-
-            <div className="creative-icons">
-              <a href="https://www.linkedin.com/in/priya-dharshini-t-20pd" target="_blank" rel="noreferrer">
-                <div className="icon-wrapper" data-tooltip="LinkedIn"><FaLinkedin /></div>
-              </a>
-              <a href="https://github.com/priya-dharshini-t" target="_blank" rel="noreferrer">
-                <div className="icon-wrapper" data-tooltip="GitHub"><FaGithub /></div>
-              </a>
-              <a href="https://twitter.com/priyad_code" target="_blank" rel="noreferrer">
-                <div className="icon-wrapper" data-tooltip="Twitter"><FaTwitter /></div>
-              </a>
-            </div>
-
-            <p className="contact-email">
-              📧 <a href="mailto:priyadharshinipriya1975@gmail.com">priyadharshinipriya1975@gmail.com</a>
-            </p>
-          </motion.div>
-        </Element>
-      </div>
+      <Footer />
     </div>
   );
 }
+
