@@ -37,7 +37,7 @@ export default function Contact({ darkMode }) {
 
       <div className="social-icons">
         <a
-          href="mailto:priyadharshini.t@example.com"
+          href="mailto:priyadharshinipriya1975@gmail.com"
           target="_blank"
           rel="noreferrer"
           className="contact-icon email"
