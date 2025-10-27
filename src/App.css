@@ -879,3 +879,49 @@ body {
     transform: translateY(20px);
   }
 }
+/* ===== Fix White Space on Mobile ===== */
+body, html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Remove extra margin that causes overflow */
+.projects-section .category-tabs {
+  margin: 1px auto 10px auto; /* center instead of right-aligned */
+}
+
+/* Fix section padding for small screens */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 1rem !important;
+  }
+
+  .section-right p,
+  .section-right h2 {
+    padding-right: 0 !important;
+  }
+
+  .projects-section .category-tabs {
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto;
+  }
+
+  .project-card {
+    width: 90%;
+  }
+
+  .profile-img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .resume-container {
+    width: 200px;
+    height: 260px;
+  }
+
+  .skills-grid {
+    gap: 1.5rem;
+  }
+}
